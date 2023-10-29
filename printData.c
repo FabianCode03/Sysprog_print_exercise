@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -12,7 +13,11 @@ int main(void)
 		perror("Error");
 	else if (id == 0)
 	{
-		execl("myProgram", "myProgram", NULL);
+		if (execl("myProgram", "myProgram", NULL) == -1)
+		{
+			perror("Fehler beim überladen des Kindprozesses");
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{
