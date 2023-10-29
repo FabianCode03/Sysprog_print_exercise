@@ -12,15 +12,11 @@ int main(void)
 		perror("Error");
 	else if (id == 0)
 	{
-		sleep(5);
-		for (int i = 1; i <= 10; ++i)
-			data = data + i;
-
-		printf("ID=%li, data=%d\n", (long)getpid(), data);
+		execl("myProgram", "myProgram", NULL);
 	}
 	else
 	{
-		sleep(20);
+		sleep(5);
 		for (int i = 0; i <= 10; ++i)
 			data = data + i;
 
