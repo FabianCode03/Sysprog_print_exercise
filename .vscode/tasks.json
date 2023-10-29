@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build myProgram",
+      "type": "shell",
+      "command": "gcc",
+      "args": ["-g", "myProgram.c", "-o", "myProgram"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "build printData",
+      "type": "shell",
+      "command": "gcc",
+      "args": ["-g", "printData.c", "-o", "printData"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}
