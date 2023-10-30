@@ -8,8 +8,9 @@
 
 static int data = 0;
 
-void *thread_function(void *args)
+void *thread_function(void *unused)
 {
+	(void)unused;
 	// sleep(5);
 	for (int i = 1; i <= 10; ++i)
 	{
