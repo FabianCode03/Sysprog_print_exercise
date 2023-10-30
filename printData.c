@@ -3,32 +3,37 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <pthread.h>
+#include <errno.h>
 
 static int data = 0;
 
+void *thread_function(void *args)
+{
+	// sleep(5);
+	for (int i = 1; i <= 10; ++i)
+	{
+		data = data + i;
+	}
+
+	printf("Threat_ID=%lu, data=%d\n", pthread_self(), data);
+	return NULL;
+}
+
 int main(void)
 {
-	pid_t id = fork();
-	if (id < 0)
-		perror("Error");
-	else if (id == 0)
-	{
-		if (execl("myProgram", "myProgram", NULL) == -1)
-		{
-			perror("Fehler beim überladen des Kindprozesses");
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
-	{
-		sleep(5);
-		for (int i = 0; i <= 10; ++i)
-			data = data + i;
+	pthread_t newThread;
 
-		printf("ID=%li, data=%d\n", (long)getpid(), data);
+	errno = pthread_create(&newThread, NULL, thread_function, NULL);
 
-		int status;
-		wait(&status);
-	}
+	// sleep(5);
+	for (int i = 0; i <= 10; ++i)
+		data = data + i;
+
+	printf("Threat_ID=%lu, data=%d\n", pthread_self(), data);
+
+	int status;
+	wait(&status);
+
 	return 0;
 }
