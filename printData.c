@@ -25,6 +25,11 @@ int main(void)
 	pthread_t newThread;
 
 	errno = pthread_create(&newThread, NULL, thread_function, NULL);
+	if (errno)
+	{
+		perror("Fehler in pthread_create()");
+		// exit(EXIT_FAILURE);
+	}
 
 	// sleep(5);
 	for (int i = 0; i <= 10; ++i)
