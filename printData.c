@@ -38,8 +38,7 @@ int main(void)
 
 	printf("Threat_ID=%lu, data=%d\n", pthread_self(), data);
 
-	int status;
-	wait(&status);
+	pthread_join(newThread, NULL);
 
 	return 0;
 }
