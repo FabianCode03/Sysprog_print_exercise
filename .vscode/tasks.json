@@ -13,7 +13,9 @@
       "presentation": {
         "reveal": "always",
         "panel": "shared"
-      }
+      },
+      "problemMatcher": "$gcc",
+      "group": "build"
     },
     {
       "label": "build printData",

@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug myProgram (Parent)",
+      "name": "Debug myProgram",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/myProgram",
@@ -19,13 +19,20 @@
           "ignoreFailures": true
         }
       ],
-      "miDebuggerPath": "gdb"
+      "miDebuggerPath": "gdb",
+      "preLaunchTask": "build myProgram",
+      "stopAtEntry": false,
+      "serverLaunchTimeout": 5000,
+      "filterStderr": false,
+      "filterStdout": false,
+      "args": [],
+      "showDisplayString": true
     },
     {
-      "name": "Debug myProgram (Child)",
+      "name": "Debug printData",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/myProgram",
+      "program": "${workspaceFolder}/printData",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
@@ -39,7 +46,14 @@
           "ignoreFailures": true
         }
       ],
-      "miDebuggerPath": "gdb"
+      "miDebuggerPath": "gdb",
+      "preLaunchTask": "build printData",
+      "stopAtEntry": false,
+      "serverLaunchTimeout": 5000,
+      "filterStderr": false,
+      "filterStdout": false,
+      "args": [],
+      "showDisplayString": true
     }
   ]
 }
